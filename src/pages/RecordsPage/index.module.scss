@@ -1,0 +1,56 @@
+
+// .list {
+//     background-color: #fff;
+// }
+
+:global(.adm-segmented-thumb) {
+    box-sizing: border-box;
+}
+.filter_wrap {
+    background-color: #fff;
+    padding: 10px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .my_segmented {
+        width: 250px;
+    }
+    .date_btn {
+        // height: 32px;
+    }
+}
+.recordItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    span {
+        display: inline-block;
+        margin-right: 10px;
+        &:first-child {
+            flex:0 1 100px;
+        }
+
+    }
+
+}
+
+.expense {
+    color: red;
+    // background-color: #ffe3e3;  
+}
+
+.income {
+    color: green;
+    // background-color: #e3ffe3;  
+}
+.loading {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon {
+    color: var(--adm-color-primary);
+}
