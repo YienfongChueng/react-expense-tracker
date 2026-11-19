@@ -1,13 +1,10 @@
-import { useQuery,useQueryClient,useMutation } from "@tanstack/react-query";
-import type { RecordItem } from '@/types/record'
 import { Card,Button,ErrorBlock,SpinLoading, Space,Toast,Dialog } from "antd-mobile";
 import { useNavigate, useParams } from "react-router-dom";
-import { getRecordById,deleteRecord } from '@/api/records'
 import styles from './index.module.scss'
-import {useRecord,useDeleteRecord,invalidateRecordLists} from '@/hooks/useRecords'
+import {useRecord,useDeleteRecord,useInvalidateRecordLists} from '@/hooks/useRecords'
 
 function RecordDetailPage() {
-    // const queryClient = useQueryClient()
+    const invalidateRecordLists = useInvalidateRecordLists()
     const params = useParams()
     const {data, isLoading,error} = useRecord(params.id!)
 

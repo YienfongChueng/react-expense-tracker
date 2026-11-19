@@ -1,0 +1,41 @@
+.card {
+    border-radius: 5px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    width: 100px;
+    height: 80px;
+    font-weight: 600;
+    padding: 10px;
+    .text {
+        font-size: 16px;
+        color: #333;
+        display: block;
+        text-align: center;
+        line-height: 40px;
+    }
+    .value {
+        font-size: 18px;
+        color:orange;
+        display: block;
+        text-align: center;
+    }
+    .income {
+        color: green;
+    }
+    .expense {
+        color: red;
+    }
+}
+.list {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    .text {
+        font-size: 14px;
+        color: #333;
+    }
+    .value {
+        font-size: 16px;
+        color: red;
+        font-weight: 600;
+    }
+}

@@ -15,7 +15,8 @@ export type NewRecord = Omit<RecordItem,'id'>
 // 查询条件
 export type RecordsParams = {
     type?: RecordType,
-    date?: string | null
+    date?: string | null,
+    keyword?: string | null
 }
 
 // export interface PageResult<T> {

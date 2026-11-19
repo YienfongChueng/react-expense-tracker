@@ -7,7 +7,8 @@ export const getRecords = async (params: RecordsParams): Promise<RecordItem[]> =
             type: params.type,
             // json-server@1.0.0-beta.15 支持 contains 操作符：date_contains=2026-09
             // 可匹配所有 2026-09-xx 的记录；axios 会自动忽略值为 null/undefined 的参数
-            date_contains: params.date
+            date_contains: params.date,
+            ...(params.keyword ? {q: params.keyword.trim()} : {})
            }
     })
     return response.data

@@ -5,6 +5,7 @@ import App from './App.tsx'
 import type { Root } from 'react-dom/client'   
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { unstableSetRender } from 'antd-mobile'
+import { AuthProvider } from './context/auth.tsx'
 
 // ✅ 创建一个 client 实例
 const queryClient = new QueryClient({
@@ -31,11 +32,12 @@ type PatchedContainer = HTMLElement & { _reactRoot?: Root }
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </QueryClientProvider>
-    
+      <AuthProvider>{/* ← 加在这层，包住所有路由 */}
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </QueryClientProvider>
+      </AuthProvider>
   </StrictMode>,
 )

@@ -1,22 +1,31 @@
 import styles from './index.module.scss'
 import type { RecordItem, RecordType } from '@/types/record'
-import { Button, ErrorBlock,List,SpinLoading,Segmented,DatePicker,Empty, type SegmentedValue } from 'antd-mobile'
+import { Button, ErrorBlock,List,SpinLoading,Segmented,DatePicker,SearchBar,Empty, type SegmentedValue } from 'antd-mobile'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useState } from 'react'
 import type { PickerDate } from 'antd-mobile/es/components/date-picker/util'
 import dayjs from 'dayjs'
 import { CloseOutline} from 'antd-mobile-icons'
-import { useRecords,invalidateRecordLists } from '@/hooks/useRecords'
+import { useRecords,useInvalidateRecordLists } from '@/hooks/useRecords'
+import { useDebounce } from '@/hooks/useDebounce'
 
 function RecordsPage() {
     const [visible,setVisible] = useState(false)
     const [searchParams,setSearchParams] = useSearchParams()
+    const [rawKeyword,setRawKeyword] = useState('')
+
+    const invalidateRecordLists = useInvalidateRecordLists()
 
     const typeParam = searchParams.get('type')
     const type: RecordType | undefined = typeParam === 'expense' || typeParam === 'income' ? typeParam : undefined
     const date = searchParams.get('date')
 
-    const { data: records, isLoading,error,isSuccess } = useRecords({type,date})
+    const debouncedSearch = useDebounce(rawKeyword,500)
+    const { data: records, isLoading,error,isSuccess } = useRecords({type,date,keyword:debouncedSearch})
+
+    const handleKeywordChange = (value:string | null) => {
+        setRawKeyword(value ?? '')
+    }
 
     const navigate = useNavigate()
     const handleRowClick = (row: RecordItem) => {
@@ -63,6 +72,7 @@ function RecordsPage() {
     )
    
     const FilterRender =  (
+        <>
             <div className={styles.filter_wrap}>
                 <Segmented
                     block
@@ -84,6 +94,8 @@ function RecordsPage() {
                     onConfirm={val => handleOnConfirm(val)}
                 />
             </div>
+            <SearchBar placeholder='搜索' value={rawKeyword} onChange={handleKeywordChange} />
+        </>
         )
     if(isSuccess && records.length === 0) {
         return (
@@ -101,7 +113,8 @@ function RecordsPage() {
     return (
         <div className={styles.list}>
             {FilterRender}
-            <List header='账单列表'>
+            
+            <List>
                 {records?.map((record) => (
                     <List.Item 
                         key={record.id} 

@@ -1,77 +1,73 @@
 {
-  "records": [
+  "records":[
     {
+      "id": "1",
       "type": "income",
       "amount": 14000,
       "category": "工资",
       "note": "9月工资",
-      "date": "2026-09-01",
-      "id": "2"
+      "date": "2026-09-01"
     },
     {
+      "id": "2",
       "type": "expense",
       "amount": 10,
       "category": "餐饮",
       "note": "早餐",
-      "date": "2026-09-08",
-      "id": "PUhlTmsRZJg"
+      "date": "2026-09-08"
     },
     {
+      "id": "3",
       "type": "expense",
       "amount": 15,
       "category": "餐饮",
       "note": "午餐",
-      "date": "2026-09-08",
-      "id": "mTV2f3T0P3w"
+      "date": "2026-09-08"
     },
     {
+      "id": "4",
       "type": "income",
       "amount": 100,
       "category": "补贴",
       "note": "高温补贴",
-      "date": "2026-09-07",
-      "id": "l9E7HhtbY-Y"
+      "date": "2026-09-07"
     },
     {
+      "id": "5",
       "type": "expense",
       "amount": 200,
       "category": "购物",
       "note": "生活用品",
-      "date": "2026-09-08",
-      "id": "nFXaWP7tGkM"
+      "date": "2026-09-08"
     },
     {
+      "id": "6",
       "type": "expense",
       "amount": 5,
       "category": "餐饮",
       "note": "饮料",
-      "date": "2026-09-08",
-      "id": "gCm8Whe3dFM"
+      "date": "2026-09-08"
     },
     {
+      "id": "7",
       "type": "income",
       "amount": 1001,
       "category": "补贴",
       "note": "高温补贴",
-      "date": "2026-09-21",
-      "id": "Jn-RqVtHSzc"
-    },
-    {
-      "type": "expense",
-      "amount": 1111,
-      "category": "test",
-      "note": "test",
-      "date": "2026-09-21",
-      "id": "PDimrM-Ejz8"
-    },
-    {
-      "type": "expense",
-      "amount": 111,
-      "category": "呜呜呜",
-      "note": "亲戚",
-      "date": "2026-09-23",
-      "id": "Li-cqmBiQh4"
+      "date": "2026-09-21"
     }
   ],
-  "$schema": "./node_modules/json-server/schema.json"
+  "users": [
+    {
+      "id": "1",
+      "username": "zyf",
+      "password": "123456"
+    },
+    {
+      "id": "2",
+      "username": "aaa",
+      "password": "123"
+    }
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#"
 }

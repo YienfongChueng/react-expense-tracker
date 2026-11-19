@@ -1,4 +1,14 @@
+import { ErrorBlock,Button } from 'antd-mobile'
+import { useNavigate } from 'react-router-dom'
 export default function NotFoundPage() {
-    return (<>找不到啦～</>)
+    const navigation = useNavigate()
+    
+    return (
+    <>
+    <ErrorBlock status='busy'>
+        <Button color='primary' onClick={()=> navigation('/')}>回首页</Button>
+    </ErrorBlock>
+    </>
+    )
     
 }

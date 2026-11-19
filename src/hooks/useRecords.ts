@@ -3,17 +3,20 @@ import {getRecords,getRecordById,createRecord,updateRecord,deleteRecord} from '@
 import type { RecordItem,NewRecord,RecordsParams} from '@/types/record'
 import {recordKeys} from '@/hooks/queryKeys'
 
-export function invalidateRecordLists() {
+export function useInvalidateRecordLists() {
     const queryClient = useQueryClient()
-    queryClient.invalidateQueries({
-        queryKey:recordKeys.lists()
-    })
+    return ()=> {
+        queryClient.invalidateQueries({
+            queryKey:recordKeys.lists()
+        })
+    }
 }
 
 export function useRecords(params:RecordsParams) {
     return useQuery({
         queryKey: recordKeys.list(params),
-        queryFn: ()=> getRecords(params)
+        queryFn: ()=> getRecords(params),
+        placeholderData:pre => pre
     })
 }
 
